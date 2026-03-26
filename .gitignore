@@ -1,0 +1,25 @@
+# Large datasets
+LD2011_2014.txt
+electricityloaddiagrams20112014.zip
+electricity_cache.parquet
+
+# Model scalers (large pickle)
+# d2_models/*.pkl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Claude Code
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.venv/
+venv/
