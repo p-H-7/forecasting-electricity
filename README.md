@@ -2,7 +2,7 @@
 
 Multi-horizon electricity load forecasting using deep learning models trained on the [UCI ElectricityLoadDiagrams 2011-2014](https://archive.ics.uci.edu/dataset/321/electricityloaddiagrams20112014) dataset. The dataset contains 15-minute interval electricity consumption readings from 370 clients in Portugal, resampled to hourly resolution for modeling.
 
-This project was built as part of the Forecasting course at Columbia University (Spring 2026).
+This project was developed as part of the course IEOR 4578: Forecasting – A Real-World Application at Columbia University under the instruction of Prof. Syed Haider during the Spring 2026 semester.
 
 ## What This Project Does
 
