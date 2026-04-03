@@ -1,7 +1,7 @@
 # Large datasets
 LD2011_2014.txt
 electricityloaddiagrams20112014.zip
-electricity_cache.parquet
+# electricity_cache.parquet  # needed for Streamlit deployment
 
 # Model scalers (large pickle)
 # d2_models/*.pkl
