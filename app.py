@@ -214,15 +214,20 @@ def load_all_resources():
                 cls = MODEL_CLASSES.get(mname)
                 if cls is None:
                     continue
-                if mname == "patchtst":
-                    model = cls(n_input=n_input, horizon=horizon)
-                elif mname == "lstm":
-                    model = cls(n_input=n_input, horizon=horizon)
-                elif mname == "tcn":
-                    model = cls(n_input=n_input, horizon=horizon)
+                # Infer architecture params from checkpoint state dict
+                state = ckpt["model_state"]
+                if mname == "tcn":
+                    n_layers = max(int(k.split(".")[1]) for k in state if k.startswith("tcn_blocks.")) + 1
+                    model = cls(n_input=n_input, horizon=horizon, n_layers=n_layers)
                 elif mname == "transformer":
+                    n_enc = max(int(k.split(".")[2]) for k in state if k.startswith("encoder.layers.")) + 1
+                    model = cls(n_input=n_input, horizon=horizon, num_layers=n_enc)
+                elif mname == "patchtst":
+                    n_enc = max(int(k.split(".")[2]) for k in state if k.startswith("encoder.layers.")) + 1
+                    model = cls(n_input=n_input, horizon=horizon, num_layers=n_enc)
+                else:
                     model = cls(n_input=n_input, horizon=horizon)
-                model.load_state_dict(ckpt["model_state"])
+                model.load_state_dict(state)
                 model.eval()
                 models[(mname, cl, h)] = model
 
